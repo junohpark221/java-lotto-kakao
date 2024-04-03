@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.*;
+import lotto.enums.Ranking;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class LottoSystemTest {
     }
 
     @Test
-    void 돈_2500원으로_로또_구매_테스트() {
+    void 돈_2500원으로_로또_구매_시_2장_구매_여부_테스트() {
         LottoSystem lottoSystem = new LottoSystem();
         Money money = new Money(2500);
         Lottos lottos = lottoSystem.buyLottos(money);
@@ -25,7 +26,7 @@ public class LottoSystemTest {
     }
 
     @Test
-    void 수익률_계산_테스트() {
+    void 일등_이등_당첨_시_수익률_계산_테스트() {
         LottoSystem lottoSystem = new LottoSystem();
         Money money = new Money(2000);
         lottoSystem.buyLottos(money);
@@ -61,6 +62,6 @@ public class LottoSystemTest {
 
         Profit profit = lottoSystem.calculateProfit();
 
-        assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (2000000000+30000000) / 2000, 0));
+        assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (Ranking.FIRST.getReward() + Ranking.SECOND.getReward()) / 2000, 0));
     }
 }

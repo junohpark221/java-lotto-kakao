@@ -19,7 +19,7 @@ public class RandomNumberGeneratorTest {
     }
 
     @Test
-    void 랜덤_로또_생성_테스트() {
+    void 랜덤_숫자_기반_로또_생성_테스트() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         Lotto lotto = randomNumberGenerator.generateLotto();
 
