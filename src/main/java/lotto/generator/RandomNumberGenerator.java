@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 public class RandomNumberGenerator implements NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
+    private static final int LOTTO_LENGTH = 6;
     private List<Integer> numberPool;
 
     public RandomNumberGenerator() {
@@ -37,14 +38,14 @@ public class RandomNumberGenerator implements NumberGenerator {
     }
 
     public Lotto generateLotto() {
-        List<Integer> numbers = generateNumbers(6);
+        List<Integer> numbers = generateNumbers(LOTTO_LENGTH);
         return convertNumbersToLotto(numbers);
     }
 
     public Answer generateAnswer() {
-        List<Integer> numbers = generateNumbers(7);
-        Lotto lotto = convertNumbersToLotto(numbers.subList(0, 6));
-        Ball bonusBall = new Ball(numbers.get(6));
+        List<Integer> numbers = generateNumbers(LOTTO_LENGTH + 1);
+        Lotto lotto = convertNumbersToLotto(numbers.subList(0, LOTTO_LENGTH));
+        Ball bonusBall = new Ball(numbers.get(LOTTO_LENGTH));
 
         return new Answer(lotto, bonusBall);
     }
