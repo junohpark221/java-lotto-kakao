@@ -81,26 +81,14 @@ public class LottoView {
     }
 
     private String getIndividualRankingDesc(Ranking rank) {
-        if (rank == Ranking.FIRST) {
-            return "6개 일치 ";
-        }
-
         if (rank == Ranking.SECOND) {
-            return "5개 일치, 보너스 볼 일치 ";
+            return String.format("%d개 일치, 보너스 볼 일치 ", rank.getMatchCount());
         }
 
-        if (rank == Ranking.THIRD) {
-            return "5개 일치 ";
+        if (rank == Ranking.FAIL) {
+            return "";
         }
 
-        if (rank == Ranking.FOURTH) {
-            return "4개 일치 ";
-        }
-
-        if (rank == Ranking.FIFTH) {
-            return "3개 일치 ";
-        }
-
-        return "";
+        return String.format("%d개 일치 ", rank.getMatchCount());
     }
 }
