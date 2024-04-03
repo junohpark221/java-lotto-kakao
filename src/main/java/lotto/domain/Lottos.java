@@ -5,17 +5,17 @@ import lotto.domain.Lotto;
 import java.util.List;
 
 public class Lottos {
-    private final List<Lotto> lottos;
+    private final List<Lotto> values;
 
-    public Lottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public Lottos(List<Lotto> values) {
+        this.values = values;
     }
 
     public int getSize() {
-        return this.lottos.size();
+        return this.values.size();
     }
 
     public Lotto get(int ix) {
-        return lottos.get(ix);
+        return values.get(ix);
     }
 }
