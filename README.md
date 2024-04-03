@@ -20,6 +20,7 @@
 - [X] LottoSystem이 구매 개수 파악
 - [X] LottoSystem이 랜덤 로또 용지 생성
 - [X] 결과 클래스는 로또 별 당첨 여부 확인
+- [X] Ranking enum은 로또의 순위 화인
 - [X] Lottos클래스는 Lotto의 리스트를 가진다.
 - [X] Lotto의 숫자는 중복되지 않아야한다.
 - [X] Ball은 1~45에 포함되는지 확인한다.
