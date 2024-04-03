@@ -61,6 +61,18 @@ public class LottoView {
         }
     }
 
+    private String getIndividualRankingDesc(Ranking rank) {
+        if (rank == Ranking.SECOND) {
+            return String.format("%d개 일치, 보너스 볼 일치 ", rank.getMatchCount());
+        }
+
+        if (rank == Ranking.FAIL) {
+            return "";
+        }
+
+        return String.format("%d개 일치 ", rank.getMatchCount());
+    }
+
     public void printProfit(Profit profit) {
         System.out.println("총 수익률은 " + profit.toString() + "입니다.(기준이 1이기 때문에 결과적으로 " + getGainOrLoss(profit) + "라는 의미임)");
     }
@@ -78,17 +90,5 @@ public class LottoView {
         }
 
         return "이익이";
-    }
-
-    private String getIndividualRankingDesc(Ranking rank) {
-        if (rank == Ranking.SECOND) {
-            return String.format("%d개 일치, 보너스 볼 일치 ", rank.getMatchCount());
-        }
-
-        if (rank == Ranking.FAIL) {
-            return "";
-        }
-
-        return String.format("%d개 일치 ", rank.getMatchCount());
     }
 }

@@ -18,13 +18,17 @@ public class LottoSystem {
         this.lottoCount = 0;
     }
 
+    public Lottos buyLottos(Money money) {
+        lottoCount = calculateLottoCount(money);
+        return generateLottos();
+    }
+
     private long calculateLottoCount(Money money) {
         return money.divide(LOTTO_PRICE);
     }
 
-    public Lottos buyLottos(Money money) {
-        lottoCount = calculateLottoCount(money);
-        return generateLottos();
+    private Lottos generateLottos() {
+        return numberGenerator.generateLottos(lottoCount);
     }
 
     public WinningLotto convertToAnswer(List<Integer> answerAndBonusNumber) {
@@ -38,18 +42,10 @@ public class LottoSystem {
         return new WinningLotto(lotto, bonusBall);
     }
 
-    private Lottos generateLottos() {
-        return numberGenerator.generateLottos(lottoCount);
-    }
-
     public void scoreLottos(Lottos lottos, WinningLotto winningLotto) {
         for (int i = 0; i < lottoCount; i++) {
             scoreLotto(lottos.get(i), winningLotto);
         }
-    }
-
-    public Result getResult() {
-        return result;
     }
 
     public void scoreLotto(Lotto lotto, WinningLotto winningLotto) {
@@ -61,5 +57,9 @@ public class LottoSystem {
         long seed = lottoCount * LOTTO_PRICE.getValue();
 
         return new Profit(reward, seed);
+    }
+
+    public Result getResult() {
+        return result;
     }
 }

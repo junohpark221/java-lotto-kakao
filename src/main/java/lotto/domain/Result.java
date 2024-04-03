@@ -22,14 +22,15 @@ public class Result {
         addScore(rank);
     }
 
-    public int getScore(Ranking rank) {
-        return score.getOrDefault(rank, 0);
-    }
-
     private void addScore(Ranking rank) {
         int rankScore = score.getOrDefault(rank, 0);
         score.put(rank, rankScore + 1);
     }
+
+    public int getScore(Ranking rank) {
+        return score.getOrDefault(rank, 0);
+    }
+
 
     public long calculateReward() {
         this.reward = 0L;
