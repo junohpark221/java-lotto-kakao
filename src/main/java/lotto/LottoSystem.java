@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
-    private NumberGenerator numberGenerator;
+    private RandomNumberGenerator numberGenerator;
     private Result result;
     private long lottoCount;
 
