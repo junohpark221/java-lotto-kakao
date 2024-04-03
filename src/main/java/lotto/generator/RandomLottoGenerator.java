@@ -31,7 +31,7 @@ public class RandomLottoGenerator{
         return new Lottos(lottos);
     }
 
-    public Lotto generateLotto() {
+    public synchronized Lotto generateLotto() {
         Collections.shuffle(ballPool);
         List<Ball> randomBalls = new ArrayList<>(ballPool.subList(0, LOTTO_LENGTH));
         return new Lotto(randomBalls);
