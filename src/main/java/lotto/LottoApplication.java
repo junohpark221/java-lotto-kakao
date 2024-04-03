@@ -4,7 +4,6 @@ import lotto.domain.*;
 import lotto.view.LottoView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LottoApplication {
     public static void main(String[] args) {
@@ -16,8 +15,8 @@ public class LottoApplication {
         lottoView.printLottos(lottos);
 
         List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
-        Answer answer = lottoSystem.convertToAnswer(answerAndBonusNumber);
-        lottoSystem.scoreLottos(lottos, answer);
+        WinningLotto winningLotto = lottoSystem.convertToAnswer(answerAndBonusNumber);
+        lottoSystem.scoreLottos(lottos, winningLotto);
 
         Result result = lottoSystem.getResult();
         lottoView.printResult(result);

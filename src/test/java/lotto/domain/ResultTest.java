@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.*;
 import lotto.enums.Ranking;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,11 +9,11 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultTest {
-    Answer answer;
+    WinningLotto winningLotto;
 
     @BeforeEach
     void setUp() {
-        answer = new Answer(
+        winningLotto = new WinningLotto(
                 new Lotto(Arrays.asList(
                         new Ball(1),
                         new Ball(2),
@@ -43,7 +42,7 @@ public class ResultTest {
                 new Ball(16)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.FAIL)).isEqualTo(1);
     }
 
@@ -59,7 +58,7 @@ public class ResultTest {
                 new Ball(6)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.FIRST)).isEqualTo(1);
     }
 
@@ -75,7 +74,7 @@ public class ResultTest {
                 new Ball(7)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.SECOND)).isEqualTo(1);
     }
 
@@ -91,7 +90,7 @@ public class ResultTest {
                 new Ball(16)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.THIRD)).isEqualTo(1);
     }
 
@@ -107,7 +106,7 @@ public class ResultTest {
                 new Ball(16)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.FOURTH)).isEqualTo(1);
     }
 
@@ -123,7 +122,7 @@ public class ResultTest {
                 new Ball(16)
         ));
 
-        result.scoreLotto(lotto, answer);
+        result.scoreLotto(lotto, winningLotto);
         assertThat(result.getScore(Ranking.FIFTH)).isEqualTo(1);
     }
 
@@ -147,8 +146,8 @@ public class ResultTest {
                 new Ball(7)
         ));
 
-        result.scoreLotto(lotto1, answer);
-        result.scoreLotto(lotto2, answer);
+        result.scoreLotto(lotto1, winningLotto);
+        result.scoreLotto(lotto2, winningLotto);
 
         long reward = result.calculateReward();
         assertThat(reward).isEqualTo(2000000000+30000000);
