@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
+    private static final String INVALID_LOTTO_SIZE_MESSAGE = "로또는 6개의 번호로 구성되어야 합니다.";
+    private static final String DUPLICATED_NUMBERS_MESSAGE = "로또 번호는 겹치면 안 됩니다.";
+
     private List<Ball> balls;
 
     public Lotto(List<Ball> balls) {
@@ -27,7 +30,7 @@ public class Lotto {
 
     private void validateNumberOfBalls(List<Ball> balls) {
         if (balls.size() != LOTTO_SIZE) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException(INVALID_LOTTO_SIZE_MESSAGE);
         }
     }
 
@@ -37,7 +40,7 @@ public class Lotto {
                 .distinct()
                 .count();
         if (count != LOTTO_SIZE) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException(DUPLICATED_NUMBERS_MESSAGE);
         }
     }
 
