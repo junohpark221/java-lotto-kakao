@@ -1,19 +1,19 @@
 package lotto;
 
 import lotto.domain.*;
-import lotto.generator.RandomNumberGenerator;
+import lotto.generator.RandomLottoGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
-    private RandomNumberGenerator numberGenerator;
+    private RandomLottoGenerator numberGenerator;
     private Result result;
     private long lottoCount;
 
     public LottoSystem() {
-        this.numberGenerator = new RandomNumberGenerator();
+        this.numberGenerator = new RandomLottoGenerator();
         this.result = new Result();
         this.lottoCount = 0;
     }

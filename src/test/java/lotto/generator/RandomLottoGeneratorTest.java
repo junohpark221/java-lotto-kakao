@@ -11,17 +11,17 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomNumberGeneratorTest {
+public class RandomLottoGeneratorTest {
     @Test
     void 랜덤_숫자_생성_생성자_테스트() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        assertThat(randomNumberGenerator).isNotNull();
+        RandomLottoGenerator randomLottoGenerator = new RandomLottoGenerator();
+        assertThat(randomLottoGenerator).isNotNull();
     }
 
     @Test
     void 랜덤_숫자_기반_로또_생성_테스트() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        Lotto lotto = randomNumberGenerator.generateLotto();
+        RandomLottoGenerator randomLottoGenerator = new RandomLottoGenerator();
+        Lotto lotto = randomLottoGenerator.generateLotto();
 
         List<Ball> balls = lotto.getBalls();
 
