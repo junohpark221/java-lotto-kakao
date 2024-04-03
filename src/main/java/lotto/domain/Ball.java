@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Objects;
+
 public class Ball implements Comparable<Ball> {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
@@ -36,10 +38,15 @@ public class Ball implements Comparable<Ball> {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Ball) {
-            return number == ((Ball) obj).getNumber();
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return number == ball.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }
