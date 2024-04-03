@@ -42,14 +42,6 @@ public class RandomNumberGenerator implements NumberGenerator {
         return convertNumbersToLotto(numbers);
     }
 
-    public Answer generateAnswer() {
-        List<Integer> numbers = generateNumbers(LOTTO_LENGTH + 1);
-        Lotto lotto = convertNumbersToLotto(numbers.subList(0, LOTTO_LENGTH));
-        Ball bonusBall = new Ball(numbers.get(LOTTO_LENGTH));
-
-        return new Answer(lotto, bonusBall);
-    }
-
     private Lotto convertNumbersToLotto(List<Integer> numbers) {
         List<Ball> balls = numbers.stream()
                 .map(Ball::new)

@@ -6,6 +6,5 @@ import lotto.domain.Lottos;
 
 public interface NumberGenerator {
     Lotto generateLotto();
-    Answer generateAnswer();
     Lottos generateLottos(long lottoCount);
 }
