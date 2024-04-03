@@ -15,16 +15,12 @@ public class Profit {
         this.decimalPart = result % 100;
     }
 
-    public String getGainOrLoss() {
-        if (integerPart == 1 && decimalPart == 0) {
-            return "이익도 손해도 아니";
-        }
+    public long getIntegerPart() {
+        return this.integerPart;
+    }
 
-        if (integerPart < 1) {
-            return "손해";
-        }
-
-        return "이익이";
+    public long getDecimalPart() {
+        return this.decimalPart;
     }
 
     @Override

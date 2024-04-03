@@ -62,7 +62,22 @@ public class LottoView {
     }
 
     public void printProfit(Profit profit) {
-        System.out.println("총 수익률은 " + profit.toString() + "입니다.(기준이 1이기 때문에 결과적으로 " + profit.getGainOrLoss() + "라는 의미임)");
+        System.out.println("총 수익률은 " + profit.toString() + "입니다.(기준이 1이기 때문에 결과적으로 " + getGainOrLoss(profit) + "라는 의미임)");
+    }
+
+    private String getGainOrLoss(Profit profit) {
+        long integerPart = profit.getIntegerPart();
+        long decimalPart = profit.getDecimalPart();
+
+        if (integerPart == 1 && decimalPart == 0) {
+            return "이익도 손해도 아니";
+        }
+
+        if (integerPart < 1) {
+            return "손해";
+        }
+
+        return "이익이";
     }
 
     private String getIndividualRankingDesc(Ranking rank) {
