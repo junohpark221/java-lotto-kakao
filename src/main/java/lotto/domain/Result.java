@@ -60,7 +60,7 @@ public class Result {
         this.reward = 0L;
 
         for (Map.Entry<Ranking, Integer> entry: this.score.entrySet()) {
-            this.reward += Ranking.getReward(entry.getKey()) * entry.getValue();
+            this.reward += entry.getKey().getReward() * entry.getValue();
         }
 
         return this.reward;
