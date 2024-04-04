@@ -24,6 +24,14 @@ public class Ball implements Comparable<Ball> {
         return number;
     }
 
+    public static int getMinBallNumber() {
+        return MIN_NUMBER;
+    }
+
+    public static int getMaxBallNumber() {
+        return MAX_NUMBER;
+    }
+
     @Override
     public int compareTo(Ball ball) {
         int ballNumber = ball.getNumber();

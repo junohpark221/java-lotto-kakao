@@ -10,17 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RandomLottoGenerator{
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
+public class RandomLottoGenerator {
     private static final int LOTTO_LENGTH = 6;
-    private List<Ball> ballPool;
-
-    public RandomLottoGenerator() {
-        this.ballPool = IntStream.rangeClosed(MIN_NUMBER, MAX_NUMBER)
-                .mapToObj(Ball::new)
-                .collect(Collectors.toList());
-    }
+    private static final List<Ball> ballPool = IntStream.rangeClosed(Ball.getMinBallNumber(), Ball.getMaxBallNumber())
+            .mapToObj(Ball::new)
+            .collect(Collectors.toList());
 
     public Lottos generateLottos(long lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
@@ -33,7 +27,7 @@ public class RandomLottoGenerator{
 
     public synchronized Lotto generateLotto() {
         Collections.shuffle(ballPool);
-        List<Ball> randomBalls = new ArrayList<>(ballPool.subList(0, LOTTO_LENGTH));
+        List<Ball> randomBalls = new ArrayList<>(ballPool.subList(0, Lotto.getLottoSize()));
         return new Lotto(randomBalls);
     }
 }
