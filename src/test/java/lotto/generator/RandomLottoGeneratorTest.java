@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +24,7 @@ public class RandomLottoGeneratorTest {
         RandomLottoGenerator randomLottoGenerator = new RandomLottoGenerator();
         Lotto lotto = randomLottoGenerator.generateLotto();
 
-        List<Ball> balls = lotto.getBalls();
+        TreeSet<Ball> balls = lotto.getBalls();
 
         List<Integer> numbers = balls.stream()
                 .map(Ball::getNumber)
