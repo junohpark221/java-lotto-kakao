@@ -35,7 +35,7 @@ public class ResultTest {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
                 new Ball(1),
-                new Ball(12),
+                new Ball(2),
                 new Ball(13),
                 new Ball(14),
                 new Ball(15),
