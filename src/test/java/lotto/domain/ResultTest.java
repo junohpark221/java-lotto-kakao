@@ -15,13 +15,13 @@ public class ResultTest {
     void setUp() {
         winningLotto = new WinningLotto(
                 new Lotto(Arrays.asList(
-                        new Ball(1),
-                        new Ball(2),
-                        new Ball(3),
-                        new Ball(4),
-                        new Ball(5),
-                        new Ball(6)
-                )), new Ball(7));
+                        Ball.of(1),
+                        Ball.of(2),
+                        Ball.of(3),
+                        Ball.of(4),
+                        Ball.of(5),
+                        Ball.of(6)
+                )), Ball.of(7));
     }
 
     @Test
@@ -34,12 +34,12 @@ public class ResultTest {
     void 낙첨_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(13),
-                new Ball(14),
-                new Ball(15),
-                new Ball(16)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(13),
+                Ball.of(14),
+                Ball.of(15),
+                Ball.of(16)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -50,12 +50,12 @@ public class ResultTest {
     void 일등_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -66,12 +66,12 @@ public class ResultTest {
     void 이등_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(7)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(7)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -82,12 +82,12 @@ public class ResultTest {
     void 삼등_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(16)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(16)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -98,12 +98,12 @@ public class ResultTest {
     void 사등_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(15),
-                new Ball(16)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(15),
+                Ball.of(16)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -114,12 +114,12 @@ public class ResultTest {
     void 오등_테스트() {
         Result result = new Result();
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(14),
-                new Ball(15),
-                new Ball(16)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(14),
+                Ball.of(15),
+                Ball.of(16)
         ));
 
         result.scoreLotto(lotto, winningLotto);
@@ -130,20 +130,20 @@ public class ResultTest {
     void 당첨금_계산_테스트() {
         Result result = new Result();
         Lotto lotto1 = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
         Lotto lotto2 = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(7)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(7)
         ));
 
         result.scoreLotto(lotto1, winningLotto);

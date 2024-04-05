@@ -32,30 +32,30 @@ public class LottoSystemTest {
         lottoSystem.buyLottos(money);
 
         Lotto lotto1 = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
         Lotto lotto2 = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(7)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(7)
         ));
         WinningLotto winningLotto = new WinningLotto(
                 new Lotto(Arrays.asList(
-                        new Ball(1),
-                        new Ball(2),
-                        new Ball(3),
-                        new Ball(4),
-                        new Ball(5),
-                        new Ball(6)
-                )), new Ball(7));
+                        Ball.of(1),
+                        Ball.of(2),
+                        Ball.of(3),
+                        Ball.of(4),
+                        Ball.of(5),
+                        Ball.of(6)
+                )), Ball.of(7));
 
         lottoSystem.scoreLotto(lotto1, winningLotto);
         lottoSystem.scoreLotto(lotto2, winningLotto);

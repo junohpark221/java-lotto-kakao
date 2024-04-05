@@ -34,9 +34,9 @@ public class LottoSystem {
     public WinningLotto convertToAnswer(List<Integer> answerAndBonusNumber) {
         List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
                 .stream()
-                .map(Ball::new)
+                .map(Ball::of)
                 .collect(Collectors.toList());
-        Ball bonusBall = new Ball(answerAndBonusNumber.get(6));
+        Ball bonusBall = Ball.of(answerAndBonusNumber.get(6));
 
         Lotto lotto = new Lotto(answerBalls);
         return new WinningLotto(lotto, bonusBall);

@@ -15,12 +15,12 @@ public class LottoTest {
     @Test
     void 생성자_테스트 () {
         Lotto lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
 
         assertThat(lotto).isNotNull();
@@ -30,12 +30,12 @@ public class LottoTest {
     void 로또_중복_숫자_검증_테스트() {
         assertThatThrownBy(() -> {
             new Lotto(Arrays.asList(
-                    new Ball(1),
-                    new Ball(1),
-                    new Ball(1),
-                    new Ball(1),
-                    new Ball(1),
-                    new Ball(1)
+                    Ball.of(1),
+                    Ball.of(1),
+                    Ball.of(1),
+                    Ball.of(1),
+                    Ball.of(1),
+                    Ball.of(1)
             ));
         }).isInstanceOf(RuntimeException.class);
     }
@@ -44,11 +44,11 @@ public class LottoTest {
     void 로또_내_볼_개수_테스트() {
         assertThatThrownBy(() -> {
             new Lotto(Arrays.asList(
-                    new Ball(1),
-                    new Ball(2),
-                    new Ball(3),
-                    new Ball(4),
-                    new Ball(5)
+                    Ball.of(1),
+                    Ball.of(2),
+                    Ball.of(3),
+                    Ball.of(4),
+                    Ball.of(5)
             ));
         }).isInstanceOf(RuntimeException.class);
     }

@@ -15,12 +15,20 @@ public class Ball implements Comparable<Ball> {
 
     private final int number;
 
-    public Ball(int number) {
-        validateNumber(number);
+    private Ball(int number) {
         this.number = number;
     }
 
-    private void validateNumber(int number) {
+    public static Ball of(int number) {
+        validateNumber(number);
+        return ballPool.get(number - 1);
+    }
+
+    public static List<Ball> allBalls() {
+        return ballPool;
+    }
+
+    private static void validateNumber(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE_MESSAGE);
         }
@@ -28,10 +36,6 @@ public class Ball implements Comparable<Ball> {
 
     public int getNumber() {
         return number;
-    }
-
-    public static List<Ball> allBalls() {
-        return ballPool;
     }
 
     @Override

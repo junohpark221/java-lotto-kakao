@@ -13,12 +13,12 @@ public class WinningLottoTest {
     @BeforeEach
     void setUp() {
         lotto = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
     }
 
@@ -26,7 +26,7 @@ public class WinningLottoTest {
     void 정답_생성자_테스트() {
         WinningLotto winningLotto = new WinningLotto(
                 lotto,
-                new Ball(7)
+                Ball.of(7)
         );
         assertThat(winningLotto).isNotNull();
     }
@@ -36,7 +36,7 @@ public class WinningLottoTest {
         assertThatThrownBy(() -> {
             new WinningLotto(
                     lotto,
-                    new Ball(6)
+                    Ball.of(6)
             );
         }).isInstanceOf(RuntimeException.class);
     }

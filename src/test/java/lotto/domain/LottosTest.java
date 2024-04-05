@@ -15,28 +15,28 @@ public class LottosTest {
     @BeforeEach
     void setUp() {
         lotto1 = new Lotto(Arrays.asList(
-                new Ball(1),
-                new Ball(2),
-                new Ball(3),
-                new Ball(4),
-                new Ball(5),
-                new Ball(6)
+                Ball.of(1),
+                Ball.of(2),
+                Ball.of(3),
+                Ball.of(4),
+                Ball.of(5),
+                Ball.of(6)
         ));
         lotto2 = new Lotto(Arrays.asList(
-                new Ball(11),
-                new Ball(12),
-                new Ball(13),
-                new Ball(14),
-                new Ball(15),
-                new Ball(16)
+                Ball.of(11),
+                Ball.of(12),
+                Ball.of(13),
+                Ball.of(14),
+                Ball.of(15),
+                Ball.of(16)
         ));
         lotto3 = new Lotto(Arrays.asList(
-                new Ball(21),
-                new Ball(22),
-                new Ball(23),
-                new Ball(24),
-                new Ball(25),
-                new Ball(26)
+                Ball.of(21),
+                Ball.of(22),
+                Ball.of(23),
+                Ball.of(24),
+                Ball.of(25),
+                Ball.of(26)
         ));
     }
     @Test
