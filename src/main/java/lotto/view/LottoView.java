@@ -5,6 +5,7 @@ import lotto.domain.Profit;
 import lotto.enums.Ranking;
 import lotto.domain.Result;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -16,15 +17,42 @@ public class LottoView {
     public long inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = scan.nextLine();
+        System.out.println();
         return Long.parseLong(money);
     }
 
-    public void printLottos(Lottos lottos) {
-        int size = lottos.getSize();
-        System.out.printf("%d개를 구매했습니다.\n", size);
+    public long inputManualCount() {
+        System.out.println("수동으로 구매할 로또 수를 입력해 주세요.");
+        String manualCount = scan.nextLine();
+        System.out.println();
+        return Long.parseLong(manualCount);
+    }
 
-        for (int i = 0; i < size; i++) {
-            System.out.println(lottos.get(i));
+    public List<List<Integer>> inputManualLottos(long manualCount) {
+        List<List<Integer>> manualLottoNumbers = new ArrayList<>();
+        System.out.println("수동으로 구매할 번호를 입력해주세요.");
+        for (int i = 0; i < manualCount; i++) {
+            String manualLotto = scan.nextLine();
+            manualLottoNumbers.add(Arrays.stream(manualLotto.split(", "))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList())
+            );
+        }
+        System.out.println();
+        return manualLottoNumbers;
+    }
+
+    public void printLottos(Lottos manualLottos, Lottos autoLottos) {
+        int manualLottoSize = manualLottos.getSize();
+        int autoLottoSize = autoLottos.getSize();
+
+        System.out.printf("수동으로 %d장, 자동으로 %d개를 구매했습니다.\n", manualLottoSize, autoLottoSize);
+
+        for (int i = 0; i < manualLottoSize; i++) {
+            System.out.println(manualLottos.get(i));
+        }
+        for (int i = 0; i < autoLottoSize; i++) {
+            System.out.println(autoLottos.get(i));
         }
 
         System.out.println();

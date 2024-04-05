@@ -2,34 +2,55 @@ package lotto;
 
 import lotto.domain.*;
 import lotto.enums.Ranking;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoSystemTest {
-    @Test
-    void 로또_시스템_생성자_테스트() {
-        LottoSystem lottoSystem = new LottoSystem();
-
-        assertThat(lottoSystem).isNotNull();
+    LottoSystem lottoSystem;
+    @BeforeEach
+    void setUp() {
+        lottoSystem = new LottoSystem();
     }
 
     @Test
     void 돈_2500원으로_로또_구매_시_2장_구매_여부_테스트() {
-        LottoSystem lottoSystem = new LottoSystem();
         Money money = new Money(2500);
-        Lottos lottos = lottoSystem.buyLottos(money);
+
+        lottoSystem.checkLottoCount(money, 0);
+        Lottos lottos = lottoSystem.buyAutoLottos();
 
         assertThat(lottos.getSize()).isEqualTo(2);
+    }
+
+    @Test
+    void 수동_로또_생성_테스트() {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        lottoNumbers.add(numbers);
+        Lottos lottos = lottoSystem.buyManualLottos(lottoNumbers);
+
+        assertThat(lottos.get(0).contain(Ball.of(1))).isTrue();
+        assertThat(lottos.get(0).contain(Ball.of(2))).isTrue();
+        assertThat(lottos.get(0).contain(Ball.of(3))).isTrue();
+        assertThat(lottos.get(0).contain(Ball.of(4))).isTrue();
+        assertThat(lottos.get(0).contain(Ball.of(5))).isTrue();
+        assertThat(lottos.get(0).contain(Ball.of(6))).isTrue();
     }
 
     @Test
     void 일등_이등_당첨_시_수익률_계산_테스트() {
         LottoSystem lottoSystem = new LottoSystem();
         Money money = new Money(2000);
-        lottoSystem.buyLottos(money);
+
+        lottoSystem.checkLottoCount(money, 0);
+        lottoSystem.buyAutoLottos();
 
         Lotto lotto1 = new Lotto(Arrays.asList(
                 Ball.of(1),

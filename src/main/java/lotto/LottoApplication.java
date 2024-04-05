@@ -11,12 +11,18 @@ public class LottoApplication {
         LottoView lottoView = new LottoView();
 
         Money money = new Money(lottoView.inputMoney());
-        Lottos lottos = lottoSystem.buyLottos(money);
-        lottoView.printLottos(lottos);
+        long manualCount = lottoView.inputManualCount();
+        lottoSystem.checkLottoCount(money, manualCount);
+
+        List<List<Integer>> manualLottoNumbers = lottoView.inputManualLottos(manualCount);
+        Lottos userManualLottos = lottoSystem.buyManualLottos(manualLottoNumbers);
+        Lottos userAutolottos = lottoSystem.buyAutoLottos();
+
+        lottoView.printLottos(userManualLottos, userAutolottos);
 
         List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
         WinningLotto winningLotto = lottoSystem.convertToAnswer(answerAndBonusNumber);
-        lottoSystem.scoreLottos(lottos, winningLotto);
+        lottoSystem.scoreLottos(userManualLottos, userAutolottos, winningLotto);
 
         Result result = lottoSystem.getResult();
         lottoView.printResult(result);
