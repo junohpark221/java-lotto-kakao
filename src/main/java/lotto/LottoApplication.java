@@ -20,8 +20,9 @@ public class LottoApplication {
 
         lottoView.printLottos(userManualLottos, userAutolottos);
 
-        List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
-        WinningLotto winningLotto = lottoSystem.convertToAnswer(answerAndBonusNumber);
+        List<Integer> answerNumber = lottoView.inputAnswerNumber();
+        int bonusNumber = lottoView.inputBonusNumber();
+        WinningLotto winningLotto = lottoSystem.convertToAnswer(answerNumber, bonusNumber);
         lottoSystem.scoreLottos(userManualLottos, userAutolottos, winningLotto);
 
         Result result = lottoSystem.getResult();

@@ -33,12 +33,12 @@ public class LottoSystem {
         return new Lottos(manaulLottos);
     }
 
-    public WinningLotto convertToAnswer(List<Integer> answerAndBonusNumber) {
-        List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
+    public WinningLotto convertToAnswer(List<Integer> answerNumber, int bonusNumber) {
+        List<Ball> answerBalls = answerNumber
                 .stream()
                 .map(Ball::of)
                 .collect(Collectors.toList());
-        Ball bonusBall = Ball.of(answerAndBonusNumber.get(6));
+        Ball bonusBall = Ball.of(bonusNumber);
 
         Lotto lotto = new Lotto(answerBalls);
         return new WinningLotto(lotto, bonusBall);

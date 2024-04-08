@@ -58,19 +58,21 @@ public class LottoView {
         System.out.println();
     }
 
-    public List<Integer> inputAnswer() {
+    public List<Integer> inputAnswerNumber() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String answerLotto = scan.nextLine();
-        List<Integer> answerAndBonusBall = Arrays.stream(answerLotto.split(", "))
+
+        return Arrays.stream(answerLotto.split(", "))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
 
+    public Integer inputBonusNumber() {
         System.out.println("보너스 볼을 입력해 주세요.");
         String bonusBallNumber = scan.nextLine();
-        answerAndBonusBall.add(Integer.parseInt(bonusBallNumber));
-
         System.out.println();
-        return answerAndBonusBall;
+
+        return Integer.parseInt(bonusBallNumber);
     }
 
     public void printResult(Result result) {
