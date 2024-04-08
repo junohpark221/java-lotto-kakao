@@ -14,6 +14,16 @@ public class Result {
         reward = 0L;
     }
 
+    public void scoreLottos(Lottos userManualLottos, Lottos userAutoLottos, WinningLotto winningLotto) {
+        for (int i = 0; i < userManualLottos.getSize(); i++) {
+            scoreLotto(userManualLottos.get(i), winningLotto);
+        }
+
+        for (int i = 0; i < userAutoLottos.getSize(); i++) {
+            scoreLotto(userAutoLottos.get(i), winningLotto);
+        }
+    }
+
     public void scoreLotto(Lotto lotto, WinningLotto winningLotto) {
         long answerCount = winningLotto.getWinningNumbers().getBalls().stream().filter(lotto::contain).count();
         boolean isCorrectBonusBall = lotto.contain(winningLotto.getBonusNumber());

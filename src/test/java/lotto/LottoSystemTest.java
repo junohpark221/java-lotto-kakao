@@ -78,10 +78,11 @@ public class LottoSystemTest {
                         Ball.of(6)
                 )), Ball.of(7));
 
-        lottoSystem.scoreLotto(lotto1, winningLotto);
-        lottoSystem.scoreLotto(lotto2, winningLotto);
+        Result result = new Result();
+        result.scoreLotto(lotto1, winningLotto);
+        result.scoreLotto(lotto2, winningLotto);
 
-        Profit profit = lottoSystem.calculateProfit(money);
+        Profit profit = lottoSystem.calculateProfit(result, money);
 
         assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (Ranking.FIRST.getReward() + Ranking.SECOND.getReward()) / 2000, 0));
     }

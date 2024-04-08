@@ -22,13 +22,13 @@ public class LottoApplication {
 
         List<Integer> answerNumber = lottoView.inputAnswerNumber();
         int bonusNumber = lottoView.inputBonusNumber();
-        WinningLotto winningLotto = lottoSystem.convertToAnswer(answerNumber, bonusNumber);
-        lottoSystem.scoreLottos(userManualLottos, userAutolottos, winningLotto);
+        WinningLotto winningLotto = new WinningLotto(answerNumber, bonusNumber);
 
-        Result result = lottoSystem.getResult();
+        Result result = new Result();
+        result.scoreLottos(userManualLottos, userAutolottos, winningLotto);
         lottoView.printResult(result);
 
-        Profit profit = lottoSystem.calculateProfit(money);
+        Profit profit = lottoSystem.calculateProfit(result, money);
         lottoView.printProfit(profit);
     }
 }
