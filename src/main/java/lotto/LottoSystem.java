@@ -9,28 +9,16 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoSystem {
-    private static final Money LOTTO_PRICE = new Money(1000);
-    private RandomLottoGenerator numberGenerator;
-    private Result result;
-    private long manualLottoCount;
-    private long autoLottoCount;
+    private final RandomLottoGenerator numberGenerator;
+    private final Result result;
 
     public LottoSystem() {
         this.numberGenerator = new RandomLottoGenerator();
         this.result = new Result();
-        this.manualLottoCount = 0;
-        this.autoLottoCount = 0;
     }
 
-    public void checkLottoCount(Money money, long manualCount) {
-        long totalLottoCount = calculateTotalCount(money);
-        validateManualCount(totalLottoCount, manualCount);
-        this.manualLottoCount = manualCount;
-        this.autoLottoCount = totalLottoCount - manualCount;
-    }
-
-    public Lottos buyAutoLottos() {
-        return numberGenerator.generateLottos(autoLottoCount);
+    public Lottos buyAutoLottos(Money money, long manualCount) {
+        return numberGenerator.generateLottos(money.getTotalLottoCount() - manualCount);
     }
 
     public Lottos buyManualLottos(List<List<Integer>> manualLottoNumbers) {
@@ -43,16 +31,6 @@ public class LottoSystem {
         }
 
         return new Lottos(manaulLottos);
-    }
-
-    private long calculateTotalCount(Money money) {
-        return money.divide(LOTTO_PRICE);
-    }
-
-    private void validateManualCount(long totalCount, long manualCount) {
-        if (manualCount > totalCount) {
-            throw new IllegalArgumentException("금액보다 많은 로또를 수동으로 구매할 수 없습니다.");
-        }
     }
 
     public WinningLotto convertToAnswer(List<Integer> answerAndBonusNumber) {
@@ -80,9 +58,9 @@ public class LottoSystem {
         result.scoreLotto(lotto, winningLotto);
     }
 
-    public Profit calculateProfit() {
+    public Profit calculateProfit(Money money) {
         long reward = result.calculateReward();
-        long seed = (manualLottoCount + autoLottoCount) * LOTTO_PRICE.getValue();
+        long seed = money.getTotalLottoCount() * Money.getLottoPrice();
 
         return new Profit(reward, seed);
     }
