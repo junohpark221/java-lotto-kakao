@@ -28,17 +28,10 @@ public class ResultTest {
 
     @Test
     void 낙첨_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(13),
-                Ball.of(14),
-                Ball.of(15),
-                Ball.of(16)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 13, 14, 15, 16);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.FAIL)).isEqualTo(1);
@@ -46,17 +39,10 @@ public class ResultTest {
 
     @Test
     void 일등_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(6)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.FIRST)).isEqualTo(1);
@@ -64,17 +50,10 @@ public class ResultTest {
 
     @Test
     void 이등_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(7)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 3, 4, 5, 7);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.SECOND)).isEqualTo(1);
@@ -82,17 +61,10 @@ public class ResultTest {
 
     @Test
     void 삼등_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(16)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 3, 4, 5, 16);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.THIRD)).isEqualTo(1);
@@ -100,17 +72,10 @@ public class ResultTest {
 
     @Test
     void 사등_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(15),
-                Ball.of(16)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 3, 4, 15, 16);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.FOURTH)).isEqualTo(1);
@@ -118,17 +83,10 @@ public class ResultTest {
 
     @Test
     void 오등_테스트() {
-        Lotto lotto = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(14),
-                Ball.of(15),
-                Ball.of(16)
-        ));
+        List<Integer> lotto = Arrays.asList(1, 2, 3, 14, 15, 16);
 
-        Lottos lottos1 = new Lottos(List.of(lotto));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
         assertThat(result.getScore(Ranking.FIFTH)).isEqualTo(1);
@@ -136,25 +94,11 @@ public class ResultTest {
 
     @Test
     void 당첨금_계산_테스트() {
-        Lotto lotto1 = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(6)
-        ));
-        Lotto lotto2 = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(7)
-        ));
+        List<Integer> lotto1 = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> lotto2 = Arrays.asList(1, 2, 3, 4, 5, 7);
 
-        Lottos lottos1 = new Lottos(List.of(lotto1, lotto2));
-        Lottos lottos2 = new Lottos(new ArrayList<>());
+        Lottos lottos1 = Lottos.buyManualLottos(List.of(lotto1, lotto2));
+        Lottos lottos2 = Lottos.buyManualLottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
 

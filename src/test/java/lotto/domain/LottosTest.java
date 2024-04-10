@@ -1,50 +1,32 @@
 package lotto.domain;
 
-import lotto.domain.Ball;
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottosTest {
-    Lotto lotto1, lotto2, lotto3;
-    @BeforeEach
-    void setUp() {
-        lotto1 = new Lotto(Arrays.asList(
-                Ball.of(1),
-                Ball.of(2),
-                Ball.of(3),
-                Ball.of(4),
-                Ball.of(5),
-                Ball.of(6)
-        ));
-        lotto2 = new Lotto(Arrays.asList(
-                Ball.of(11),
-                Ball.of(12),
-                Ball.of(13),
-                Ball.of(14),
-                Ball.of(15),
-                Ball.of(16)
-        ));
-        lotto3 = new Lotto(Arrays.asList(
-                Ball.of(21),
-                Ball.of(22),
-                Ball.of(23),
-                Ball.of(24),
-                Ball.of(25),
-                Ball.of(26)
-        ));
-    }
     @Test
-    void 생성자_테스트() {
-        Lottos lottos = new Lottos(Arrays.asList(
-                lotto1, lotto2, lotto3
-        ));
-        assertThat(lottos).isNotNull();
+    void 수동_로또_생성_테스트() {
+        List<Integer> lotto1 = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> lotto2 = Arrays.asList(11, 12, 13, 14, 15, 16);
+        List<Integer> lotto3 = Arrays.asList(21, 22, 23, 24, 25, 26);
 
+        Lottos lottos = Lottos.buyManualLottos(Arrays.asList(lotto1, lotto2, lotto3));
+        assertThat(lottos).isNotNull();
+    }
+
+    @Test
+    void 자동_로또_생성_테스트() {
+        Money money = new Money(2500);
+        Lottos lottos = Lottos.buyRandomLottos(money, 0);
+
+        Assertions.assertAll(
+                () -> assertThat(lottos).isNotNull(),
+                () -> assertThat(lottos.getSize()).isEqualTo(2)
+        );
     }
 }
