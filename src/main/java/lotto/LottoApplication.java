@@ -24,8 +24,7 @@ public class LottoApplication {
         int bonusNumber = lottoView.inputBonusNumber();
         WinningLotto winningLotto = new WinningLotto(answerNumbers, bonusNumber);
 
-        Result result = new Result();
-        result.scoreLottos(userManualLottos, userAutolottos, winningLotto);
+        Result result = Result.scoreLottos(userManualLottos, userAutolottos, winningLotto);
         lottoView.printResult(result);
 
         Profit profit = lottoSystem.calculateProfit(result, money);

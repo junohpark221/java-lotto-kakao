@@ -9,32 +9,34 @@ public class Result {
     private final Map<Ranking, Integer> score;
     private long reward;
 
-    public Result() {
-        score = new HashMap<>();
+    private Result(Map<Ranking, Integer> scores) {
+        this.score = scores;
         reward = 0L;
     }
 
-    public void scoreLottos(Lottos userManualLottos, Lottos userAutoLottos, WinningLotto winningLotto) {
+    public static Result scoreLottos(Lottos userManualLottos, Lottos userAutoLottos, WinningLotto winningLotto) {
+        Map<Ranking, Integer> scores = new HashMap<>();
+
         for (int i = 0; i < userManualLottos.getSize(); i++) {
-            scoreLotto(userManualLottos.get(i), winningLotto);
+            Ranking rank = scoreLotto(userManualLottos.get(i), winningLotto);
+            int rankScore = scores.getOrDefault(rank, 0);
+            scores.put(rank, rankScore + 1);
         }
 
         for (int i = 0; i < userAutoLottos.getSize(); i++) {
-            scoreLotto(userAutoLottos.get(i), winningLotto);
+            Ranking rank = scoreLotto(userAutoLottos.get(i), winningLotto);
+            int rankScore = scores.getOrDefault(rank, 0);
+            scores.put(rank, rankScore + 1);
         }
+
+        return new Result(scores);
     }
 
-    public void scoreLotto(Lotto lotto, WinningLotto winningLotto) {
+    public static Ranking scoreLotto(Lotto lotto, WinningLotto winningLotto) {
         long answerCount = winningLotto.getWinningNumbers().getBalls().stream().filter(lotto::contain).count();
         boolean isCorrectBonusBall = lotto.contain(winningLotto.getBonusNumber());
 
-        Ranking rank = Ranking.getRank(answerCount, isCorrectBonusBall);
-        addScore(rank);
-    }
-
-    private void addScore(Ranking rank) {
-        int rankScore = score.getOrDefault(rank, 0);
-        score.put(rank, rankScore + 1);
+        return Ranking.getRank(answerCount, isCorrectBonusBall);
     }
 
     public int getScore(Ranking rank) {
