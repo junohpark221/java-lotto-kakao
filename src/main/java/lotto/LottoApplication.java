@@ -27,7 +27,7 @@ public class LottoApplication {
         Result result = Result.scoreLottos(userManualLottos, userAutolottos, winningLotto);
         lottoView.printResult(result);
 
-        Profit profit = lottoSystem.calculateProfit(result, money);
+        Profit profit = Profit.calculateProfit(result, money);
         lottoView.printProfit(profit);
     }
 }

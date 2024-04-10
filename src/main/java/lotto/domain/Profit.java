@@ -4,7 +4,7 @@ public class Profit {
     private final long integerPart;
     private final long decimalPart;
 
-    public Profit(long reward, long seed) {
+    private Profit(long reward, long seed) {
         if (seed == 0) {
             this.integerPart = 1;
             this.decimalPart = 0;
@@ -13,6 +13,13 @@ public class Profit {
         long result = reward * 100 / seed;
         this.integerPart = result / 100;
         this.decimalPart = result % 100;
+    }
+
+    public static Profit calculateProfit(Result result, Money money) {
+        long reward = result.calculateReward();
+        long seed = money.getTotalLottoCount() * Money.getLottoPrice();
+
+        return new Profit(reward, seed);
     }
 
     public long getIntegerPart() {

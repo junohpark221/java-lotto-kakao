@@ -82,7 +82,7 @@ public class LottoSystemTest {
         Lottos lottos2 = new Lottos(new ArrayList<>());
 
         Result result = Result.scoreLottos(lottos1, lottos2, winningLotto);
-        Profit profit = lottoSystem.calculateProfit(result, money);
+        Profit profit = Profit.calculateProfit(result, money);
 
         assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (Ranking.FIRST.getReward() + Ranking.SECOND.getReward()) / 2000, 0));
     }

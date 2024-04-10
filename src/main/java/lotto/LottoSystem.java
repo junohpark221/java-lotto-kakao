@@ -30,10 +30,5 @@ public class LottoSystem {
         return new Lottos(manaulLottos);
     }
 
-    public Profit calculateProfit(Result result, Money money) {
-        long reward = result.calculateReward();
-        long seed = money.getTotalLottoCount() * Money.getLottoPrice();
 
-        return new Profit(reward, seed);
-    }
 }
